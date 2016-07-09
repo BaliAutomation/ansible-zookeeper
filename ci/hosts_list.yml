@@ -5,7 +5,7 @@
 
 - hosts: localhost
   connection: local
-  sudo: yes
+  become: yes
   roles:
     - role: ../../
       zookeeper_hosts:
@@ -13,7 +13,7 @@
 
 - hosts: localhost
   connection: local
-  sudo: yes
+  become: yes
   gather_facts: false
   tasks:
       # Expecting myid to be 1 defined by loop.index
