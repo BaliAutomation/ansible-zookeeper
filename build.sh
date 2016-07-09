@@ -3,7 +3,7 @@
 DOCKERNAME="ansibleshipyard/ansible-zookeeper"
 DOCKER_DIR="dockerfiles"
 # TAGS=(ubuntu centos)
-TAGS=(ubuntu)
+TAGS=(centos)
 CONTEXT=.
 
 usage() {
