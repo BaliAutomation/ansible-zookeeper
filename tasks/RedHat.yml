@@ -34,6 +34,11 @@
   stat: path=/etc/init/
   register: etc_init
 
+- name: Create rsyslog config.
+  template: src=rsyslog.j2 dest=/etc/rsyslog.d/zookeeper.conf
+  notify:
+    - Restart rsyslog
+
 - name: Upstart script.
   template: src=zookeeper.conf.j2 dest=/etc/init/zookeeper.conf
   when: etc_init.stat.exists == true
