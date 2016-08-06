@@ -7,7 +7,7 @@
   tags: bootstrap
 
 - name: Install OS Packages
-  yum: name={{ item }} state=present
+  yum: pkg={{ item }} state=present
   with_items:
     - libselinux-python
 
