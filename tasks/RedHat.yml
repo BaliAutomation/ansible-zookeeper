@@ -37,14 +37,14 @@
 - name: Create rsyslog config.
   template: src=rsyslog.j2 dest=/etc/rsyslog.d/zookeeper.conf
   notify:
-    - Restart rsyslog
+    - restart rsyslog
 
 - name: Upstart script.
   template: src=zookeeper.conf.j2 dest=/etc/init/zookeeper.conf
   when: etc_init.stat.exists == true
   tags: deploy
   notify:
-    - Restart zookeeper
+    - restart zookeeper
 
 - name: Check if systemd exists
   stat: path=/usr/lib/systemd/system/
@@ -55,19 +55,19 @@
   when: systemd_check.stat.exists == true
   tags: deploy
   notify:
-    - Restart zookeeper
+    - restart zookeeper
 
 - name: Write myid file.
   template: src=myid.j2 dest={{data_dir}}/myid owner=zookeeper group=zookeeper
   tags: deploy
   notify:
-    - Restart zookeeper
+    - restart zookeeper
 
 - name: Configure zookeeper
   template: src=zoo.cfg.j2 dest={{ zookeeper_dir }}/conf/zoo.cfg owner=zookeeper group=zookeeper
   tags: deploy
   notify:
-    - Restart zookeeper
+    - restart zookeeper
 
 - name: Start zookeeper
   service: name=zookeeper state=started enabled=yes
