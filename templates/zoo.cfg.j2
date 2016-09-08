@@ -1,10 +1,11 @@
 tickTime={{ tick_time }}
 dataDir={{ data_dir }}
 dataLogDir={{ log_dir }}
+clientPortAddress={{ansible_tun0.ipv4.address}}
 clientPort={{ client_port }}
 initLimit={{ init_limit }}
 syncLimit={{ sync_limit }}
 
 {% for server in zookeeper_hosts %}
-server.{{loop.index}}=server
+server.{{loop.index}}={{hostvars[server+'sensetif.net'].ansible_tun0.ipv4.address}}:2888:3888
 {% endfor %}
