@@ -7,7 +7,8 @@ Description=ZooKeeper
 Type=simple
 User=zookeeper
 Group=zookeeper
-ExecStart=export JMXDISABLE=false && {{zookeeper_dir}}/bin/zkServer.sh start-foreground
+Environment=JMXDISABLE=false
+ExecStart={{zookeeper_dir}}/bin/zkServer.sh start-foreground
 TimeoutSec=300
 
 [Install]
