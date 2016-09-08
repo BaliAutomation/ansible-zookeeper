@@ -1,6 +1,7 @@
 tickTime={{ tick_time }}
 dataDir={{ data_dir }}
 dataLogDir={{ log_dir }}
+clientPortAddress={{hostvars[ansible_hostname].ansible_tun0.ipv4.address}}
 clientPort={{ client_port }}
 initLimit={{ init_limit }}
 syncLimit={{ sync_limit }}
