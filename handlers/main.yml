@@ -1,6 +1,10 @@
 ---
 - name: restart zookeeper
-  systemd: name=zookeeper state=restarted daemon_reload=yes enabled=yes
+  shell: /bin/systemctl daemon-reload
+  notify: restart zookeeper 2
+
+- name: restart zookeeper 2
+  service: name=zookeeper state=restarted
 
 - name: restart rsyslog
-  systemd: name=rsyslog state=restarted enabled=yes
+  service: name=rsyslog state=restarted
