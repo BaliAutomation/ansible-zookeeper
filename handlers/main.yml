@@ -3,4 +3,4 @@
   service: name=zookeeper state=restarted
 
 - name: restart rsyslog
-  service: name=rsyslog state=restarted
+  systemd: name=rsyslog state=restarted
